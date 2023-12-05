@@ -51,4 +51,9 @@ class AuthController extends AControllerBase
         $this->app->getAuth()->logout();
         return $this->html();
     }
+
+    public function register(): Response
+    {
+        return $this->html();
+    }
 }

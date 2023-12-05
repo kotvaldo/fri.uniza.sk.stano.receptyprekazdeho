@@ -38,7 +38,7 @@ abstract class Model implements \JsonSerializable
     ): array {
         self::connect();
         try {
-            $sql = "SELECT * FROM `" . static::getTableName() . "`";
+            $sql = " SELECT * FROM `" . static::getTableName() . "`";
             if ($whereClause != null) {
                 $sql .= " WHERE $whereClause";
             }

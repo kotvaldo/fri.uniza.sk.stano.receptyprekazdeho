@@ -1,0 +1,176 @@
+.newsletter-title {
+    max-width: unset;
+    margin-bottom: 13px;
+    font-size: 18px;
+    text-align: center;
+    color: #000000;
+}
+
+.newsletter-description {
+    max-width: 410px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 auto 6px;
+    color: #000;
+}
+
+.newsletter {
+    position: relative;
+    width: 100%;
+    background-color: #c7c7c7;
+    height: 174px;
+    font-family: PT Sans, sans-serif;
+    padding: 18px 25px 24px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.newsletter-link {
+    display: inline-block;
+    padding: 1px 10px;
+    background-color: #547616;
+    color: #ffffff;
+    font-family:  PT Sans, sans-serif;
+    text-decoration: none;
+    border: 1px solid #547616;
+    border-radius: 10px;
+
+}
+.newsletter-link:hover {
+    color: #000000;
+    font-family:  PT Sans, sans-serif;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.border {
+    border: solid 2px white;
+}
+
+
+footer {
+    padding: 40px 0;
+    background-color: #ffffff;
+}
+footer .social {
+    text-align: center;
+    padding-bottom: 25px;
+    color: #4b4c4d;
+}
+footer .social a {
+    font-size: 24px;
+    color: inherit;
+    border: 1px solid #ccc;
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 8px;
+    opacity: 0.75;
+}
+
+footer ul {
+    margin-top: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+footer ul a {
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.8;
+}
+footer ul li {
+    display: inline-block;
+    padding: 0 15px;
+}
+
+footer .copyright {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: #aaa;
+}
+
+
+.left-items .nav-link{
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+.right-items {
+    margin-left: 10px;
+}
+
+.right-items .nav-link {
+    color: #000;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: #f7f7f7;
+    padding: 10px;
+    border: 2px solid #999;
+    border-radius: 10px;
+}
+
+.menu-img {
+    width: auto;
+    height: 80px;
+    margin: 0 auto;
+}
+
+
+
+.navbar.navbar-expand-lg {
+    background-color: rgba(58, 147, 33, 0.56);
+}
+
+header .hesita-top-bar {
+    background-color: #333333;
+
+}
+
+.sel-link {
+    margin-left: 15px;
+    text-decoration: none;
+    color: white;
+
+}
+
+.sel-link:hover {
+    text-decoration: underline;
+
+}
+
+.pull-right {
+    position: relative;
+    right: 0;
+    left: 0;
+}
+
+.language-sel-img {
+    max-height: 10px;
+    width: 20px;
+}
+
+.f-link{
+    margin-left: 10px;
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+.f-link:hover{
+    color: #007bff;
+}
