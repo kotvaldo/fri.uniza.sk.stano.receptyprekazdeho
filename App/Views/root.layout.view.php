@@ -82,7 +82,7 @@
                         <a class="nav-link" href="<?= $link ->url("auth.login")?>">Prihlásiť sa</a>
                     </li>
                     <li class="nav-item right-items">
-                        <a class="nav-link" href="#">Registrovať sa</a>
+                        <a class="nav-link" href="<?= $link ->url("auth.register")?>">Registrovať sa</a>
                     </li>
                 </ul>
             <?php } ?>

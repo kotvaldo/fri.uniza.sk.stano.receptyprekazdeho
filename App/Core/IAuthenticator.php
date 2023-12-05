@@ -21,6 +21,7 @@ interface IAuthenticator
      * Perform user login
      * @return void
      */
+    public function register($login, $email, $password): bool;
     public function logout(): void;
 
     /**
