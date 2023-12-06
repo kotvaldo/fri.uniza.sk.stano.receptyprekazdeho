@@ -15,7 +15,6 @@ class ProfileController extends AControllerBase
         $formData = $this->app->getRequest()->getPost();
         $data = [];
         $now = new DateTime();
-        $now->format("Y-m-d");
         if (isset($formData['submit'])) {
 
             if ($formData['password'] != $formData['password_retype']) {

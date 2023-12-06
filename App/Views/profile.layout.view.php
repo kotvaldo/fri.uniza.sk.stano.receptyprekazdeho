@@ -65,7 +65,7 @@
                 </li>
                 <?php if ($auth->isLogged()) { ?>
                     <li class="nav-item left-items">
-                        <a class="nav-link" href="<?= $link->url("home.add") ?>">Pridaj príspevok</a>
+                        <a class="nav-link" href="<?= $link->url("recipe.add") ?>">Pridaj príspevok</a>
                     </li>
                 <?php } ?>
             </ul>
