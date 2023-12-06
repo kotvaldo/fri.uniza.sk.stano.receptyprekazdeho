@@ -100,4 +100,17 @@ class DummyAuthenticator implements IAuthenticator
     {
         return $_SESSION['user'];
     }
+
+    public function getProfile($login): Profile
+    {
+        $users = Profile::getAll();
+        $current_user = null;
+        foreach ($users as $i) {
+            if ($i->getLogin() == $login) {
+                $current_user = $i;
+            }
+
+        }
+        return $current_user;
+    }
 }

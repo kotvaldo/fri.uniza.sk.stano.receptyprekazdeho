@@ -6,27 +6,41 @@ $layout = 'profile';
 /** @var \App\Core\IAuthenticator $auth */
 
 ?>
+<link rel="stylesheet" href="/public/css/profile.css">
+<div class="container text-center mt-5">
+    <img src="<?=$data['user']->getPicture()?>" alt="Profile Image" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
+    <h4 class="mt-3"><?=$auth ->getLoggedUserName()?></h4>
+    <span class="mt-3"><?=$data['user'] ->getEmail()?></span>
+    <hr class="my-4">
 
-<?php
+    <div class="container">
+        <h4 class="mt-3">Zmeniť email</h4>
+        <form class="form-signin" method="post" action="<?= $link->url("") ?>">
+            <div class="form-label-group mb-3">
+                <input name="email" type="text" id="email" class="form-control" placeholder="New E-mail"
+                       required >
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary" type="submit" name="submit">Submit
+                </button>
+            </div>
+        </form>
+        <form class="form-signin" method="post" action="<?= $link->url("") ?>">
+            <h4 class="mt-3">Zmeniť heslo</h4>
+            <div class="form-label-group mb-3">
+                <input name="password" type="text" id="password" class="form-control" placeholder="Old password"
+                       required>
+            </div>
+            <div class="form-label-group mb-3">
+                <input name="new_password" type="text" id="new_password" class="form-control" placeholder="New password"
+                       required >
+            </div>
+            <div class="form-label-group mb-3">
+                <input name="password_retype" type="password" id="password_retype" class="form-control"
+                       placeholder="Retype password" required>
+            </div>
 
-?>
-<div class="profile-container">
-    <div class="profile-info">
-        <h1>Your Name</h1>
-        <p>Occupation: Web Developer</p>
-        <p>Location: City, Country</p>
-        <p>About Me: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <div class="contact-info">
-            <p>Email: your.email@example.com</p>
-            <p>Phone: +1 (555) 123-4567</p>
-        </div>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/yourname" target="_blank">LinkedIn</a>
-            <a href="https://twitter.com/yourhandle" target="_blank">Twitter</a>
-            <!-- Add more social links as needed -->
-        </div>
-    </div>
-    <div class="profile-image">
-        <img src="your-profile-image.jpg" alt="Your Name">
+            <button type="submit" class="btn btn-success">Save Changes</button>
+        </form>
     </div>
 </div>

@@ -44,6 +44,19 @@ class ProfileController extends AControllerBase
     }
     public function index(): Response
     {
-        return $this->html();
+        $data = [];
+        $profile = null;
+        if($this->app->getAuth()->isLogged()) {
+            $profile = $this->app->getAuth()->getProfile($this->app->getAuth()->getLoggedUserName());
+        }
+        return $this->html(
+           ['user' => $profile
+
+           ], 'index'
+        );
     }
+
+
+
+
 }

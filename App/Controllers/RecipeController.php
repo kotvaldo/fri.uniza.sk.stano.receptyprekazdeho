@@ -17,6 +17,12 @@ class RecipeController extends AControllerBase
     }
     public function add(): Response
     {
-        return $this->redirect($this->url("home.recipes"));
+        return $this->html();
     }
+    public function save() {
+
+
+    }
+
+
 }

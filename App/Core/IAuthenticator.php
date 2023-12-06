@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Models\Profile;
+
 /**
  * Interface IAuthenticator
  * Interface for authentication
@@ -29,6 +31,7 @@ interface IAuthenticator
      */
     public function register($login, $email): bool;
 
+    public function getProfile($login) : Profile;
     public function getLoggedUserName(): string;
 
     /**
