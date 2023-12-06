@@ -158,6 +158,15 @@ header .hesita-top-bar {
     left: 0;
 }
 
+.profile {
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #000000;
+    text-align: center;
+}
+
+
 .language-sel-img {
     max-height: 10px;
     width: 20px;

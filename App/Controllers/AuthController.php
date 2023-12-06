@@ -6,6 +6,7 @@ use App\Config\Configuration;
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Core\Responses\ViewResponse;
+use App\Models\Profile;
 
 /**
  * Class AuthController
@@ -52,8 +53,5 @@ class AuthController extends AControllerBase
         return $this->html();
     }
 
-    public function register(): Response
-    {
-        return $this->html();
-    }
+
 }

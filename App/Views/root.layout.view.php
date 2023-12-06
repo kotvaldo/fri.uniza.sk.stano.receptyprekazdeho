@@ -66,10 +66,9 @@
             </ul>
             <?php if ($auth->isLogged()) { ?>
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                    <li class="nav-item right-items">
-                        <a href="#">
-                            <span class="navbar-text">Prihlásený používateľ: <b><?= $auth->getLoggedUserName() ?></b></span>
-                        </a>
+                    <li class="nav-item profile">
+                        <a class="nav-link profile" href="#">
+                        </a> <?= $auth->getLoggedUserName() ?>
                     </li>
 
                     <li class="nav-item right-items">
@@ -82,7 +81,7 @@
                         <a class="nav-link" href="<?= $link ->url("auth.login")?>">Prihlásiť sa</a>
                     </li>
                     <li class="nav-item right-items">
-                        <a class="nav-link" href="<?= $link ->url("auth.register")?>">Registrovať sa</a>
+                        <a class="nav-link" href="<?= $link ->url("profile.register")?>">Registrovať sa</a>
                     </li>
                 </ul>
             <?php } ?>
