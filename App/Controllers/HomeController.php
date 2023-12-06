@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
+use App\Models\Recipe;
 
 /**
  * Class HomeController
@@ -37,7 +38,9 @@ class HomeController extends AControllerBase
      */
     public function recipes(): Response
     {
-        return $this->html();
+        return $this->html([
+            'recipes' => Recipe::getAll()
+        ]);
     }
 
     public function videoRecipes(): Response
