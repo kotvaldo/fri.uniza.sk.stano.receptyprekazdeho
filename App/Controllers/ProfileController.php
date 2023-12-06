@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Models\Profile;
+use App\Models\Recipe;
 use DateTime;
 
 class ProfileController extends AControllerBase
@@ -41,21 +42,73 @@ class ProfileController extends AControllerBase
         }
         return $this->html($data);
     }
+
     public function index(): Response
     {
         $data = [];
         $profile = null;
-        if($this->app->getAuth()->isLogged()) {
+        if ($this->app->getAuth()->isLogged()) {
             $profile = $this->app->getAuth()->getProfile($this->app->getAuth()->getLoggedUserName());
         }
-        return $this->html(
-           ['user' => $profile
 
-           ], 'index'
+        $formData = $this->app->getRequest()->getPost();
+        if (isset($formData['sumbit_email'])) {
+            if ($this->verify($formData['email'])) {
+                $profile->setEmail($formData['email']);
+                $profile->save();
+                return $this->html(
+                    ['user' => $profile, 'success' => "Zmena emailu sa podarila !"
+                    ], 'index'
+                );
+            } else {
+                return $this->html(
+                    ['user' => $profile, 'message' => "Zmena emailu sa nepodarila !"
+                    ], 'index');
+            }
+        }
+
+        if (isset($formData['sumbit_password'])) {
+            if ($formData['password'] != $profile->getPassword()) {
+                return $this->html(
+                    ['user' => $profile, 'message' => "Zadali ste zle stare_heslo!"
+                    ], 'index'
+                );
+            }
+            if ($formData['new_password'] != $formData['password_retype']) {
+                return $this->html(
+                    ['user' => $profile, 'message' => "Zadane hesla sa nezhoduju !"
+                    ], 'index'
+                );
+            }
+            $profile->setPassword($formData['new_password']);
+            $profile->save();
+            return $this->html(
+                ['user' => $profile,
+                    'success' => "Zmena hesla sa podarila !"
+                ], 'index'
+            );
+
+        }
+
+        return $this->html(
+            ['user' => $profile
+
+            ], 'index'
         );
     }
 
-
+    public function verify($email): bool
+    {
+        $profiles = Profile::getAll();
+        if ($email != null) {
+            foreach ($profiles as $i) {
+                if ($i->getEmail() == $email) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
 
 }

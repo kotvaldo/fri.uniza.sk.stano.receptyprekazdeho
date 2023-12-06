@@ -18,11 +18,8 @@ class RecipeController extends AControllerBase
 
     public function add():Response {
 
-        $strings = [];
         $now = new DateTime();
-        foreach ($categories = Category::getAll() as $i) {
-            $strings[] = $i->getNazov();
-        }
+        $categories = Category::getAll();
 
         $formData = $this->app->getRequest()->getPost();
         if (isset($formData['submit'])) {
@@ -35,13 +32,13 @@ class RecipeController extends AControllerBase
             $recipe->setDateCreated($now->format("Y-m-d-H-i-s"));
             $recipe->save();
             return $this->html([
-                'categories' => $strings,
+                'categories' => $categories,
                 'success' => "Uspesne pridanie prispevku!"
             ], 'add');
         }
 
         return $this->html([
-            'categories' => $strings
+            'categories' => $categories
         ], 'add');
     }
     public function index(): Response

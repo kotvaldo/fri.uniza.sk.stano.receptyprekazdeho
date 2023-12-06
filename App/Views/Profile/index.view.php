@@ -27,11 +27,11 @@ $layout = 'profile';
                 </div>
                 <form class="form-signin" method="post" action="<?= $link->url("") ?>">
                     <div class="form-label-group mb-3">
-                        <input name="email" type="text" id="email" class="form-control" placeholder="New E-mail"
+                        <input name="email" type="email" id="email" class="form-control" placeholder="New E-mail"
                                required>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-primary" type="submit" name="submit">Save Changes
+                        <button class="btn btn-primary" type="submit" name="submit_email" id="submit_email">Save Changes
                         </button>
                     </div>
                 </form>
@@ -45,19 +45,14 @@ $layout = 'profile';
             <div class="card-body">
                 <h5 class="card-title text-center">Zmena hesla</h5>
                 <div class="text-center text-danger mb-3">
-                    <?= @$data['message'] ?>
-                    <div style="color: green;">
-                        <?= @$data['success'] ?>
-                    </div>
-                </div>
                 <form class="form-signin" method="post" action="<?= $link->url("") ?>">
                     <div class="form-label-group mb-3">
-                        <input name="password" type="text" id="password" class="form-control"
+                        <input name="password" type="password" id="password" class="form-control"
                                placeholder="Old password"
                                required>
                     </div>
                     <div class="form-label-group mb-3">
-                        <input name="new_password" type="text" id="new_password" class="form-control"
+                        <input name="new_password" type="password" id="new_password" class="form-control"
                                placeholder="New password"
                                required>
                     </div>
@@ -66,7 +61,7 @@ $layout = 'profile';
                                placeholder="Retype password" required>
                     </div>
 
-                    <button type="submit" class="btn btn-success">Save Changes</button>
+                    <button type="submit" class="btn btn-success" name="submit_password" id="submit_password">Save Changes</button>
                 </form>
 
             </div>

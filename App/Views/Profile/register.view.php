@@ -23,7 +23,7 @@
                                    required autofocus>
                         </div>
                         <div class="form-label-group mb-3">
-                            <input name="email" type="text" id="email" class="form-control" placeholder="E-mail" required autofocus>
+                            <input name="email" type="email" id="email" class="form-control" placeholder="E-mail" required autofocus>
                         </div>
 
                         <div class="form-label-group mb-3">

@@ -1,5 +1,7 @@
 <?php
 
+$layout = 'profile';
+/** @var \App\Models\Category $cat */
 /** @var Array $data */
 /** @var \App\Core\LinkGenerator $link */
 /** @var \App\Core\IAuthenticator $auth */
@@ -28,8 +30,8 @@
                         <div class="form-label-group mb-3">
                             <label for="categories">Vyber si kategóriu</label>
                             <select id="categories" name="categories">
-                                <?php foreach ($data['categories'] as $i): ?>
-                                    <option value=<?= $i?>><?= $i?></option>
+                                <?php foreach ($data['categories'] as $cat): ?>
+                                    <option value=<?= $cat->getNazov()?>><?= $cat->getNazov()?></option>
                                 <?php endforeach; ?>
 
                             </select>
