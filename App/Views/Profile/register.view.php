@@ -16,21 +16,21 @@
                     </div>
                     <form class="form-signin" method="post" action="<?= $link->url("register") ?>">
                         <div class="form-label-group mb-3">
-                            <input name="login" type="text" id="login" class="form-control" placeholder="Login"
-                                   required autofocus>
+                            <label for="login"></label><input name="login" type="text" id="login" class="form-control" placeholder="Login"
+                                                              required autofocus>
                         </div>
                         <div class="form-label-group mb-3">
-                            <input name="email" type="text" id="email" class="form-control" placeholder="E-mail" required autofocus>
-                        </div>
-
-                        <div class="form-label-group mb-3">
-                            <input name="password" type="password" id="password" class="form-control"
-                                   placeholder="Password" required>
+                            <label for="email"></label><input name="email" type="text" id="email" class="form-control" placeholder="E-mail" required autofocus>
                         </div>
 
                         <div class="form-label-group mb-3">
-                            <input name="password_retype" type="password" id="password_retype" class="form-control"
-                                   placeholder="Retype password" required>
+                            <label for="password"></label><input name="password" type="password" id="password" class="form-control"
+                                                                 placeholder="Password" required>
+                        </div>
+
+                        <div class="form-label-group mb-3">
+                            <label for="password_retype"></label><input name="password_retype" type="password" id="password_retype" class="form-control"
+                                                                        placeholder="Retype password" required>
                         </div>
 
 
