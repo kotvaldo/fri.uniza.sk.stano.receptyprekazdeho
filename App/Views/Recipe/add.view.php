@@ -13,7 +13,6 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">Pridanie receptu</h5>
                     <div class="text-center text-danger mb-3">
-                        <?= @$data['message'] ?>
                         <div style="color: green;">
                             <?= @$data['success'] ?>
                         </div>
@@ -24,7 +23,7 @@
                                    required autofocus>
                         </div>
                         <div class="input-group has-validation mb-3 ">
-                            <textarea class="form-control" aria-label="With textarea" placeholder="Text" name="text" id="recipe-text"><?= @$data['post']?->getText()?></textarea>
+                            <textarea class="form-control" aria-label="With textarea" placeholder="Text" name="text" id="text"></textarea>
                         </div>
                         <div class="form-label-group mb-3">
                             <label for="categories">Vyber si kategóriu</label>

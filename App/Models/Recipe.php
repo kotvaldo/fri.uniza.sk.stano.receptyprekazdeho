@@ -13,22 +13,22 @@ class Recipe extends Model
 
     protected $date_created;
     protected $user_login;
-    protected $category_id;
+    protected $category_name;
 
     /**
      * @return mixed
      */
-    public function getCategoryId()
+    public function getCategoryName()
     {
-        return $this->category_id;
+        return $this->category_name;
     }
 
     /**
-     * @param mixed $category_id
+     * @param mixed $category_name
      */
-    public function setCategoryId($category_id): void
+    public function setCategoryName($category_name): void
     {
-        $this->category_id = $category_id;
+        $this->category_name = $category_name;
     }
 
     /**

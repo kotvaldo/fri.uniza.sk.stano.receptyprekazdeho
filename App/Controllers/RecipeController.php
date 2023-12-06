@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Models\Category;
+use App\Models\Recipe;
+use DateTime;
 
 class RecipeController extends AControllerBase
 {
@@ -17,10 +19,27 @@ class RecipeController extends AControllerBase
     public function add():Response {
 
         $strings = [];
+        $now = new DateTime();
         foreach ($categories = Category::getAll() as $i) {
             $strings[] = $i->getNazov();
-
         }
+
+        $formData = $this->app->getRequest()->getPost();
+        if (isset($formData['submit'])) {
+            $recipe = new Recipe();
+            $recipe->setTitle($formData['title']);
+            $recipe->setText($formData['text']);
+            $recipe->setCategoryName($formData['categories']);
+            $recipe->setPicture(null);
+            $recipe->setUserLogin($this->app->getAuth()->getLoggedUserName());
+            $recipe->setDateCreated($now->format("Y-m-d-H-i-s"));
+            $recipe->save();
+            return $this->html([
+                'categories' => $strings,
+                'success' => "Uspesne pridanie prispevku!"
+            ], 'add');
+        }
+
         return $this->html([
             'categories' => $strings
         ], 'add');
