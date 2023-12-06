@@ -27,6 +27,8 @@ interface IAuthenticator
      * Return name of a logged user
      * @return string
      */
+    public function register($login, $email): bool;
+
     public function getLoggedUserName(): string;
 
     /**

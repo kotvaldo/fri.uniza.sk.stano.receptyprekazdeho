@@ -72,6 +72,7 @@
             <?php if ($auth->isLogged()) { ?>
                 <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                     <li class="nav-item right-items">
+                        <a class="nav-link"
                         <a class="nav-link" href="<?= $link ->url("profile.index")?>"> ÚČET</a>
                     </li>
 
@@ -99,37 +100,6 @@
         <?= $contentHTML ?>
     </div>
 </div>
-<footer>
-    <div class="social">
-        <a href="https://www.instagram.com"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.facebook.com"><i class="bi bi-facebook"></i></a>
-    </div>
-    <ul class="list">
-        <li>
-            <a href="<?= $link->url("home.index") ?>">Domov</a>
-        </li>
-        <?php if (!$auth->isLogged()) { ?>
-            <li>
-                <a href="<?= $link->url("auth.login") ?>">Prihlásenie</a>
-            </li>
-        <?php } else { ?>
-            <li>
-                <a href="<?= $link->url("profile.index") ?>">Profil</a>
-            </li>
-
-        <?php } ?>
-        <li>
-            <a href="#">O nás</a>
-        </li>
-        <li>
-            <a href="#">Pravidlá</a>
-        </li>
-        <li>
-            <a href="#">Súkromie</a>
-        </li>
-    </ul>
-    <p class="copyright">Recepty pre každého @ 2023</p>
-</footer>
 
 </body>
 </html>

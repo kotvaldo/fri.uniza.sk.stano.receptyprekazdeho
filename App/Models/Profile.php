@@ -9,9 +9,6 @@ class Profile extends \App\Core\Model
     protected ?string $login;
     protected ?string $email;
 
-    protected ?DateTime $created;
-
-
     protected ?string $picture;
     protected ?string $password;
 
@@ -65,5 +62,6 @@ class Profile extends \App\Core\Model
     {
         $this->picture = $picture;
     }
+
 
 }

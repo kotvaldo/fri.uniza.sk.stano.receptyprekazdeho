@@ -32,7 +32,7 @@ class DummyAuthenticator implements IAuthenticator
     {
         $users = Profile::getAll();
         foreach ($users as $i) {
-            if($i->getLogin() == $login && $i->getPassword() == $password) {
+            if ($i->getLogin() == $login && $i->getPassword() == $password) {
                 $_SESSION['user'] = $login;
                 return true;
             }
@@ -43,6 +43,18 @@ class DummyAuthenticator implements IAuthenticator
     /**
      * Logout the user
      */
+
+    public function register($login, $email): bool
+    {
+        $users = Profile::getAll();
+        foreach ($users as $i) {
+            if ($i->getLogin() == $login && $i->getEmail() == $email) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public function logout(): void
     {
         if (isset($_SESSION["user"])) {

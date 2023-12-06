@@ -1,0 +1,33 @@
+h1 {
+    color: #333;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+}
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-info {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.profile-image {
+    max-width: 200px;
+    border-radius: 10px;
+}
+
+.contact-info {
+    margin-top: 20px;
+}
+
+.social-links a {
+    text-decoration: none;
+    margin-right: 10px;
+    color: #007bff;
+}

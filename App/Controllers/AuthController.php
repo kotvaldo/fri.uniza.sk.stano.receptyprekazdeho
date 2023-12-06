@@ -7,6 +7,7 @@ use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Core\Responses\ViewResponse;
 use App\Models\Profile;
+use DateTime;
 
 /**
  * Class AuthController
@@ -47,6 +48,7 @@ class AuthController extends AControllerBase
      * Logout a user
      * @return ViewResponse
      */
+
     public function logout(): Response
     {
         $this->app->getAuth()->logout();

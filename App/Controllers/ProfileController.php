@@ -11,39 +11,38 @@ class ProfileController extends AControllerBase
 {
     public function register(): Response
     {
-        $now = new DateTime();
         $users = Profile::getAll();
         $formData = $this->app->getRequest()->getPost();
-
+        $data = [];
+        $now = new DateTime();
+        $now->format("Y-m-d");
         if (isset($formData['submit'])) {
 
             if ($formData['password'] != $formData['password_retype']) {
-                $errors[] = "Pole 'password_retype' sa nezhoduje s 'password'";
-                return $this->html(["errors" => $errors, "formData" => $formData], "form");
-            }
-            foreach ($users as $i) {
-                if ($i->getLogin() == $formData['login']) {
-                    $errors[] = "Login 'login' je zabraty.";
-                    return $this->html(["errors" => $errors, "formData" => $formData], "form");
-                }
-                if ($i->getEmail() == $formData['email']) {
-                    $errors[] = "Pouzivatel s emailom 'email' uz existuje.";
-                    return $this->html(["errors" => $errors, "formData" => $formData], "form");
-                }
+                $data = ['message' => "Pole 'password_retype' sa nezhoduje s 'password'"];
+                return $this->html($data);
             }
 
-            $profile = new Profile();
-            $profile->setLogin($formData['login']);
-            $profile->setEmail($formData['email']);
-            $profile->setPassword($formData['password']);
-            $profile->setPicture(null);
-            $profile->save();
-            return $this->html();
+            $registered = $this->app->getAuth()->register($formData['login'], $formData['email']);
+            if (!$registered) {
+                $data = ['message' => "Pouzivatel s loginom 'login' uz existuje."];
+                return $this->html($data);
+
+            } else {
+                $profile = new Profile();
+                $profile->setLogin($formData['login']);
+                $profile->setEmail($formData['email']);
+                $profile->setPassword($formData['password']);
+                $profile->setPicture("public/images/blank-profile-picture.png");
+                $profile->save();
+                $data = ['success' => "Uspesna registracia, môžete sa prihlásiť !"];
+                return $this->html($data);
+
+            }
 
         }
-        return $this->html();
+        return $this->html($data);
     }
-
     public function index(): Response
     {
         return $this->html();
