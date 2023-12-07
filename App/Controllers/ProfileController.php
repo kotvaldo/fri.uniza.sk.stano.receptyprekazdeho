@@ -52,50 +52,61 @@ class ProfileController extends AControllerBase
         }
 
         $formData = $this->app->getRequest()->getPost();
-        if (isset($formData['sumbit_email'])) {
+
+        //Zmena mailu
+        if (isset($formData['submit_email'])) {
             if ($this->verify($formData['email'])) {
                 $profile->setEmail($formData['email']);
                 $profile->save();
-                return $this->html(
-                    ['user' => $profile, 'success' => "Zmena emailu sa podarila !"
-                    ], 'index'
-                );
+                return $this->html([
+                    'success_email' => "Zmena emailu sa podarila !",
+                        'user' => $profile
+
+                ],'index');
             } else {
-                return $this->html(
-                    ['user' => $profile, 'message' => "Zmena emailu sa nepodarila !"
-                    ], 'index');
+                return $this->html([
+                    'message_email' => "Email je uz pouzity!",
+                    'user' => $profile
+
+                ],'index');
             }
         }
 
-        if (isset($formData['sumbit_password'])) {
+        //Zmena hesla
+        if (isset($formData['submit_password'])) {
             if ($formData['password'] != $profile->getPassword()) {
-                return $this->html(
-                    ['user' => $profile, 'message' => "Zadali ste zle stare_heslo!"
-                    ], 'index'
-                );
+                return $this->html([
+                    'message' => "Stare heslo sa nezhoduje !",
+                    'user' => $profile
+
+                ],'index');
             }
             if ($formData['new_password'] != $formData['password_retype']) {
-                return $this->html(
-                    ['user' => $profile, 'message' => "Zadane hesla sa nezhoduju !"
-                    ], 'index'
-                );
+                return $this->html([
+                    'message' => "Hesla sa nezhoduju !",
+                    'user' => $profile
+
+                ],'index');
             }
             $profile->setPassword($formData['new_password']);
             $profile->save();
-            return $this->html(
-                ['user' => $profile,
-                    'success' => "Zmena hesla sa podarila !"
-                ], 'index'
-            );
+            return $this->html([
+                'success' => "Zmena hesla prebehla uspesne!",
+                'user' => $profile
+
+            ],'index');
 
         }
+
 
         return $this->html(
             ['user' => $profile
 
             ], 'index'
         );
+
     }
+
 
     public function verify($email): bool
     {
@@ -110,5 +121,13 @@ class ProfileController extends AControllerBase
         return true;
     }
 
+    public function delete(): Response
+    {
+        $formData = $this->app->getRequest()->getPost();
+        $profile = $this->app->getAuth()->getProfile($this->app->getAuth()->getLoggedUserName());
+        $profile->delete();
+        return $this->redirect($this->url("auth.logout"));
+
+    }
 
 }
