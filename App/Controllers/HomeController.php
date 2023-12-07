@@ -38,9 +38,8 @@ class HomeController extends AControllerBase
      */
     public function recipes(): Response
     {
-        return $this->html([
-            'recipes' => Recipe::getAll()
-        ]);
+        $data = Recipe::getAll();
+        return $this->html($data);
     }
 
     public function videoRecipes(): Response
