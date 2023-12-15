@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/public/css/root.layout.css">
 
-    <script src="/public/js/script.js"></script>
+    <script src="/public/js/passwordChecker.js"></script>
 </head>
 <body>
 <header>
@@ -86,7 +86,7 @@
                         <a class="nav-link" href="<?= $link->url("auth.login") ?>">Prihlásiť sa</a>
                     </li>
                     <li class="nav-item right-items">
-                        <a class="nav-link" href="<?= $link->url("profile.register") ?>">Registrovať sa</a>
+                        <a class="nav-link" href="<?= $link->url("auth.register") ?>">Registrovať sa</a>
                     </li>
                 </ul>
             <?php } ?>

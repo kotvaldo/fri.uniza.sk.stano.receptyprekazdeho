@@ -10,42 +10,11 @@ use DateTime;
 
 class ProfileController extends AControllerBase
 {
-    public function register(): Response
-    {
-        $users = Profile::getAll();
-        $formData = $this->app->getRequest()->getPost();
-        $data = [];
-        if (isset($formData['submit'])) {
 
-            if ($formData['password'] != $formData['password_retype']) {
-                $data = ['message' => "Pole 'password_retype' sa nezhoduje s 'password'"];
-                return $this->html($data);
-            }
-
-            $registered = $this->app->getAuth()->register($formData['login'], $formData['email']);
-            if (!$registered) {
-                $data = ['message' => "Pouzivatel s loginom 'login' uz existuje."];
-                return $this->html($data);
-
-            } else {
-                $profile = new Profile();
-                $profile->setLogin($formData['login']);
-                $profile->setEmail($formData['email']);
-                $profile->setPassword($formData['password']);
-                $profile->setPicture("public/images/blank-profile-picture.png");
-                $profile->save();
-                $data = ['success' => "Uspesna registracia, môžete sa prihlásiť !"];
-                return $this->html($data);
-
-            }
-
-        }
-        return $this->html($data);
-    }
 
     public function index(): Response
     {
-        $data = [];
+
         $profile = null;
         if ($this->app->getAuth()->isLogged()) {
             $profile = $this->app->getAuth()->getProfile($this->app->getAuth()->getLoggedUserName());
@@ -60,15 +29,15 @@ class ProfileController extends AControllerBase
                 $profile->save();
                 return $this->html([
                     'success_email' => "Zmena emailu sa podarila !",
-                        'user' => $profile
+                    'user' => $profile
 
-                ],'index');
+                ], 'index');
             } else {
                 return $this->html([
                     'message_email' => "Email je uz pouzity!",
                     'user' => $profile
 
-                ],'index');
+                ], 'index');
             }
         }
 
@@ -79,14 +48,14 @@ class ProfileController extends AControllerBase
                     'message' => "Stare heslo sa nezhoduje !",
                     'user' => $profile
 
-                ],'index');
+                ], 'index');
             }
             if ($formData['new_password'] != $formData['password_retype']) {
                 return $this->html([
                     'message' => "Hesla sa nezhoduju !",
                     'user' => $profile
 
-                ],'index');
+                ], 'index');
             }
             $profile->setPassword($formData['new_password']);
             $profile->save();
@@ -94,7 +63,7 @@ class ProfileController extends AControllerBase
                 'success' => "Zmena hesla prebehla uspesne!",
                 'user' => $profile
 
-            ],'index');
+            ], 'index');
 
         }
 

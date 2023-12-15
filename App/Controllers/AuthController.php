@@ -55,5 +55,34 @@ class AuthController extends AControllerBase
         return $this->redirect($this->url("home.index"));
     }
 
+    public function register(): Response
+    {
+        $users = Profile::getAll();
+        $formData = $this->app->getRequest()->getPost();
+        $data = [];
+        if (isset($formData['submit'])) {
+
+            $registered = $this->app->getAuth()->register($formData['login'], $formData['email']);
+            if (!$registered) {
+                $data = ['message' => "Pouzivatel s loginom 'login' uz existuje."];
+                return $this->html($data);
+
+            } else {
+                $profile = new Profile();
+                $profile->setLogin($formData['login']);
+                $profile->setEmail($formData['email']);
+                $profile->setPassword($formData['password']);
+                $profile->setPicture("public/images/blank-profile-picture.png");
+                $profile->save();
+                return $this->redirect($this->url("auth.login"));
+
+
+            }
+
+        }
+
+        return $this->html();
+    }
+
 
 }
